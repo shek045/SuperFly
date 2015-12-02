@@ -29,7 +29,7 @@ void draw(){
       rect(positionx[i],400 - (300 - randseed[i]), 100,400); 
       line(v.x,v.y,vectors[i].x,vectors[i].y);
       line(v.x,v.y,vectors0[i].x,vectors0[i].y);
-      positionx[i] = positionx[i] - 2;
+      positionx[i] = positionx[i] - 4;
       //println(v.x - vectors[0].x);
       if(v.y - vectors[i].y <= 0 && v.x - vectors[i].x >= 0 && v.x - vectors[i].x <= 100)
         runGame = false;
@@ -37,13 +37,15 @@ void draw(){
         runGame = false;
     }
     
+    v = new PVector(v.x, v.y + 1);
+    if(v.x - vectors[9].x > 100)
+      background(0);
   }
   if(!runGame){
       background(255);
       image(gOver,87,166);
   }
   //v = new PVector(mouseX, mouseY);
-  v = new PVector(v.x, v.y + 1);
 
 }
 void mousePressed(){
