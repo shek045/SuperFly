@@ -1,0 +1,58 @@
+PImage img1, img2, outimg, img5;
+int loc;
+PFont f; 
+int value = 800;
+int px, py;
+int vx, vy;
+boolean text;
+
+void setup() {
+  img1 = loadImage("img1.png");
+  img2 = loadImage("img2.jpg");
+  img5 = loadImage("img5.png");
+  image(img5, 0, 0);
+  img5.resize(0, 100);
+  img1.resize(0, 500);
+  img3 = loadImage("img3.png");
+  size(1280, 800);
+  outimg = createImage(img2.width, img2.height, RGB);
+  f = createFont("TimesNewRoman", 100, true);
+  px = -50;
+  py = 400;
+  vx = 1;
+  vy = -1;
+  text = false;
+}
+void draw() {
+  img2.loadPixels();
+  img5.loadPixels();
+  img1.loadPixels();
+  image(img2, 0, 0);
+  fill(255, 255, 255, 100);
+  noStroke();
+  rect(10, 40, 200, 100);
+  rect(0, 600, 1280, 800);
+  //image(img3, width/4,height/3);
+
+  if (text == true) {
+    image(img1, px, py);
+    if (px<width/4) {
+      px += vx;
+      py += vy;
+      textFont(f, 30);                  
+      text("One fine day, Superman couldn't find Lois Lane anywhere in Metropolis. He flew all the way to Gotham in search of Lois. Help him save his girl from the hands of Batman.", value, 650); 
+      value = value - 4;
+    }
+  } else {
+    image(img1, px, py);
+    textFont(f, 30);                  
+    text(" One fine day, Superman couldn't find Lois Lane anywhere in Metropolis. He flew all the way to Gotham in search of Lois. Help him save his girl from the hands of Batman.", value, 650); 
+    value = value - 5;
+  }
+  updatePixels();
+  image(img5, width-1250 + random (-5, 5), height-750);
+}
+
+void mouseClicked() {
+  text = !text;
+}
