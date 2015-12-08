@@ -1,0 +1,43 @@
+
+PImage img1, img2, outimg, img5;
+int loc;
+PFont d, t; 
+int value = 400;
+int px, py;
+int vx, vy;
+boolean text;
+
+void setup() {
+
+  img7 = loadImage("img1.png");
+  img7.resize(0, 500);
+  size(800, 400);
+  outimg = createImage(img7.width, img7.height, RGB);
+  d = createFont("TimesNewRoman", 400, true);
+  px = -50;
+  py = 400;
+  vx = 1;
+  vy = -1;
+  text = true;
+  
+}
+
+void draw() {
+  img7.loadPixels();
+  image(img7, 0, 0);
+  textFont(d, 140);  
+  text("S U P E R F L Y", value, 250);
+  t = createFont("TimesNewRoman", 400, true);
+  text = false;
+  if (text == false) {
+    px += vx;
+    py += vy;
+    textFont(t, 25);                  
+    text("Abhishek Kundu" + "  "+ "Cole Ballinger"+ "  "+"Rattil Chowdhury"+ "  "+"Lukas Suess"+ "  "+"Sam Verkruyse", value, 380); 
+    value = value - 2;
+  }
+
+updatePixels();
+}
+
+
